@@ -1,6 +1,6 @@
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
-
+from tkinter import Canvas
 import customtkinter
 from PIL import Image, ImageTk
 
@@ -42,7 +42,7 @@ def select_file_button():
         text=settings.open_button_label(),
         command=select_file
     )
-    open_button.grid(column=0, row=0, sticky='w', padx=5, pady=5)
+    open_button.grid(column=0, row=0, sticky='w', padx=5, pady=8)
 
 
 def start_simulation_button():
@@ -53,7 +53,7 @@ def start_simulation_button():
         image=start_simulation_image,
         text=settings.start_simulation_label(),
     )
-    simulation_button.grid(column=1, row=0, sticky='w', padx=5, pady=5)
+    simulation_button.grid(column=1, row=0, sticky='w', padx=5, pady=8)
 
 
 def pause_simulation_button():
@@ -64,12 +64,21 @@ def pause_simulation_button():
         image=pause_simulation_image,
         text=settings.pause_simulation_label(),
     )
-    simulation_button.grid(column=2, row=0, sticky='w', padx=5, pady=5)
+    simulation_button.grid(column=2, row=0, sticky='w', padx=5, pady=8)
 
 
 def initialize_window():
     set_settings()
+
     select_file_button()
     start_simulation_button()
     pause_simulation_button()
+
+    canvas = Canvas(window, bg='gray', width='965', height='540')
+    canvas.create_arc((5, 10, 150, 200), start=0, extent=150, fill='red')
+    canvas.create_arc((500, 30, 100, 130), start=50, extent=80, fill='green')
+    canvas.create_arc((500, 700, 100, 130), start=50, extent=80, fill='black')
+    canvas.create_arc((150, 50, 20, 150), start=150, extent=80, fill='white')
+    canvas.grid(column=0, columnspan=30, row=1, sticky='w', padx=5, pady=5)
+
     window.mainloop()
