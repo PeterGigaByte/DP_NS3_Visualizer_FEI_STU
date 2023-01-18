@@ -43,6 +43,14 @@ def start_simulation_label():
     return settings['start_simulation_label']
 
 
+def resume_simulation_image():
+    return settings['resume_simulation_image']
+
+
+def resume_simulation_label():
+    return settings['resume_simulation_label']
+
+
 def pause_simulation_image():
     return settings['pause_simulation_image']
 

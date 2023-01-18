@@ -18,6 +18,8 @@ def build_gui_settings(config):
     config['GUI']['select_file_image'] = 'open-file.png'
     config['GUI']['start_simulation_image'] = 'start-sim.png'
     config['GUI']['start_simulation_label'] = 'Start simulation'
+    config['GUI']['resume_simulation_image'] = 'resume-sim.png'
+    config['GUI']['resume_simulation_label'] = 'Resume simulation'
     config['GUI']['pause_simulation_image'] = 'pause-sim.png'
     config['GUI']['pause_simulation_label'] = 'Pause simulation'
 
