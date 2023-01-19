@@ -9,7 +9,7 @@ def build_gui_settings(config):
     config['GUI'] = {}
     config['GUI']['title'] = 'NS3 Visualizer'
     config['GUI']['width'] = '980'
-    config['GUI']['height'] = '600'
+    config['GUI']['height'] = '700'
     config['GUI']['open_button_label'] = 'Select simulation file'
     config['GUI']['show_info_label'] = 'Select file'
     config['GUI']['appearance_mode'] = 'dark'

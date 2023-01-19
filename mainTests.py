@@ -44,7 +44,7 @@ def parsing_test(filename):
 def initialize_window_test():
     if allowed_tests_config["initialize_window_test"] is False:
         return
-    window.initialize_window()
+    window.Gui2D().initialize_window()
 
 
 # Testing functionality to get objects from parsing
