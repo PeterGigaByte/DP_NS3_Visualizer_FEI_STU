@@ -57,3 +57,43 @@ def pause_simulation_image():
 
 def pause_simulation_label():
     return settings['pause_simulation_label']
+
+
+def resource_path():
+    return settings['resource_path']
+
+
+def canvas_bg_color():
+    return settings['canvas_bg_color']
+
+
+def canvas_width():
+    return settings['canvas_width']
+
+
+def canvas_height():
+    return settings['canvas_height']
+
+
+def frame_information_width():
+    return settings['frame_information_width']
+
+
+def frame_information_height():
+    return settings['frame_information_height']
+
+
+def frame_information_bg_color():
+    return settings['frame_information_bg_color']
+
+
+def bar_width():
+    return settings['bar_width']
+
+
+def text_color():
+    return settings['text_color']
+
+
+def node_img():
+    return settings['node_img']

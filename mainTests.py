@@ -1,6 +1,6 @@
 from convertors.objects_definition import Node, Nu, NonP2pLinkProperties, Ip, Address, Ncs, P, Wpr, Pr, Res, Link, IpV6
 from convertors.xml_reader import call_xml_parser
-from gui import window
+from gui.simulation import Ns3VisualizerApp
 from utils.manager import get_objects_by_type
 
 # Allowed tests in current state
@@ -44,7 +44,7 @@ def parsing_test(filename):
 def initialize_window_test():
     if allowed_tests_config["initialize_window_test"] is False:
         return
-    window.Gui2D().initialize_window()
+    Ns3VisualizerApp().gui.mainloop()
 
 
 # Testing functionality to get objects from parsing

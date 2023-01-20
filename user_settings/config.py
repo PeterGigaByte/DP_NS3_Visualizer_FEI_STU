@@ -22,6 +22,16 @@ def build_gui_settings(config):
     config['GUI']['resume_simulation_label'] = 'Resume simulation'
     config['GUI']['pause_simulation_image'] = 'pause-sim.png'
     config['GUI']['pause_simulation_label'] = 'Pause simulation'
+    config['GUI']['resource_path'] = 'resources/'
+    config['GUI']['canvas_bg_color'] = 'gray'
+    config['GUI']['canvas_width'] = '965'
+    config['GUI']['canvas_height'] = '540'
+    config['GUI']['frame_information_width'] = '965'
+    config['GUI']['frame_information_height'] = '50'
+    config['GUI']['frame_information_bg_color'] = 'gray'
+    config['GUI']['bar_width'] = '965'
+    config['GUI']['text_color'] = 'white'
+    config['GUI']['node_img'] = 'router.png'
 
 
 def build_file():
@@ -47,7 +57,6 @@ def read_config():
 def get_gui_config():
     return read_config()["GUI"]
 
-
 # TODO
 # To delete(testing purpose):
-build_file()
+# build_file()
