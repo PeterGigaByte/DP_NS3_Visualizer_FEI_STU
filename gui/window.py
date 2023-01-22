@@ -29,7 +29,7 @@ class MenuFrame(customtkinter.CTkFrame):
 
         #  switch which defines direction of simulation
         switch_var = customtkinter.BooleanVar(value=False)
-        self.switch_button = customtkinter.CTkSwitch(master=self, text="Inverzne", command=None,
+        self.switch_button = customtkinter.CTkSwitch(master=self, text="Inverse", command=None,
                                                      variable=switch_var, onvalue=True, offvalue=False)
         self.switch_button.grid(column=5, row=0, sticky='w', padx=5, pady=8)
 
