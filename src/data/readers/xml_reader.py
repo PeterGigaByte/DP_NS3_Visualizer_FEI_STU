@@ -1,7 +1,9 @@
+import logging
+from xml.dom.minidom import parse
 from xml.etree import ElementTree
 
-from convertors.objects_definition import Anim, Tags, Node, Nu, NonP2pLinkProperties, Ip, IpV6, Address, Ncs, P, Wpr, \
-    Pr, Res, Link
+from src.data.objects.objects_definition import Tags, Anim, Node, Nu, NonP2pLinkProperties, Address, Ip, IpV6, Ncs, P, \
+    Wpr, Pr, Res, Link
 
 
 def parse_tag(selected_tag):
@@ -104,7 +106,9 @@ def parse_tag(selected_tag):
                         )
 
 
-def call_xml_parser(path):
+def call_xml_tree_element_parser(path):
+    logging.debug('Xml parser begin')
+    logging.debug('File path: {0}'.format(path))
     path = path
     tree = ElementTree.parse(path)
     tags = tree.getroot()
@@ -123,13 +127,17 @@ def call_xml_parser(path):
         # check if some item has no type - test functionality
         if item is None:
             none_type += 1
-            print(f"Unknown tag in main content : {item}")
+            print(f'Unknown tag in main content : {item}')
         anim_content.append(parse_tag(selected_tag))
 
     # add to anim object as content
     anim.content = anim_content
 
     # info print
-    print(f"NoneType tags : {none_type}")
-
+    print(f'NoneType tags : {none_type}')
+    logging.debug('Xml parser end')
     return anim, none_type
+
+
+def call_xml_dom_parser(path):
+    return parse(path)

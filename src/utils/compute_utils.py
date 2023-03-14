@@ -19,5 +19,5 @@ def compute_coordinates_location(x, y, multiplier, screen_width, screen_height):
 def create_node_dict_with_coordinates(nodes):
     nodes_dict = {}
     for node in nodes:
-        nodes_dict[node.id] = {"loc_x": node.loc_x, "loc_y": node.loc_y}
+        nodes_dict[node.id] = {'loc_x': node.loc_x, 'loc_y': node.loc_y}
     return nodes_dict

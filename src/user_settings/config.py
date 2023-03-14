@@ -1,7 +1,7 @@
 import configparser
 import os
 
-settings = 'settings.cfg'
+settings = '../settings.cfg'
 settings_exist = os.path.exists(settings)
 
 
@@ -22,7 +22,7 @@ def build_gui_settings(config):
     config['GUI']['resume_simulation_label'] = 'Resume simulation'
     config['GUI']['pause_simulation_image'] = 'pause-sim.png'
     config['GUI']['pause_simulation_label'] = 'Pause simulation'
-    config['GUI']['resource_path'] = 'resources/'
+    config['GUI']['resource_path'] = '../resources/'
     config['GUI']['canvas_bg_color'] = 'gray'
     config['GUI']['canvas_width'] = '965'
     config['GUI']['canvas_height'] = '540'
@@ -32,6 +32,8 @@ def build_gui_settings(config):
     config['GUI']['bar_width'] = '965'
     config['GUI']['text_color'] = 'white'
     config['GUI']['node_img'] = 'router.png'
+    config['PARSER'] = {}
+    config['PARSER']['xml'] = 'treeElement'
 
 
 def build_file():
@@ -49,14 +51,19 @@ if not settings_exist:
 
 def read_config():
     config = configparser.ConfigParser()
-    config.read('settings.cfg')
+    config.read('../settings.cfg')
     config.sections()
     return config
 
 
 def get_gui_config():
-    return read_config()["GUI"]
+    return read_config()['GUI']
+
+
+def get_parser_config():
+    return read_config()['PARSER']
+
 
 # TODO
 # To delete(testing purpose):
-# build_file()
+build_file()

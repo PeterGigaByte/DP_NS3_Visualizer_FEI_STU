@@ -1,8 +1,8 @@
 import customtkinter
-from PIL import Image, ImageTk
+from PIL import Image
 from customtkinter import CTkProgressBar
 
-from gui import settings
+from src.user_settings import settings
 
 
 class MenuFrame(customtkinter.CTkFrame):
@@ -29,7 +29,7 @@ class MenuFrame(customtkinter.CTkFrame):
 
         #  switch which defines direction of simulation
         switch_var = customtkinter.BooleanVar(value=False)
-        self.switch_button = customtkinter.CTkSwitch(master=self, text="Inverse", command=None,
+        self.switch_button = customtkinter.CTkSwitch(master=self, text='Inverse', command=None,
                                                      variable=switch_var, onvalue=True, offvalue=False)
         self.switch_button.grid(column=5, row=0, sticky='w', padx=5, pady=8)
 
@@ -37,7 +37,7 @@ class MenuFrame(customtkinter.CTkFrame):
         self.grid(padx=10, pady=10, sticky=customtkinter.NSEW)
 
     def init_button(self, image_name, button_label, column_position, command):
-        image = ImageTk.PhotoImage(
+        image = customtkinter.CTkImage(
             Image.open(settings.resource_path() + image_name).resize((20, 20), Image.ANTIALIAS))
         button = customtkinter.CTkButton(
             master=self,
@@ -53,22 +53,22 @@ class InformationFrame(customtkinter.CTkFrame):
     def __init__(self, container):
         super().__init__(container)
         self.configure(
-            width=settings.frame_information_width(),
-            height=settings.frame_information_height()
+            width=int(settings.frame_information_width()),
+            height=int(settings.frame_information_height())
         )
         # progress bar definition
         self.progress_bar = CTkProgressBar(master=self, width=int(settings.bar_width()), height=30,
-                                           orient='horizontal',
+                                           orientation='horizontal',
                                            mode='determinate')
         self.progress_bar.set(0)
-        self.progress_bar_label = customtkinter.CTkLabel(master=self, text="")
+        self.progress_bar_label = customtkinter.CTkLabel(master=self, text='')
 
         self.grid(padx=10, pady=10, sticky=customtkinter.NSEW)
 
         # progress bar show
 
-        self.progress_bar_label.grid(column=2, row=4, columnspan=30, padx=150, sticky="w")
-        self.progress_bar.grid(column=0, row=3, columnspan=15, pady=5, padx=5, sticky="w")
+        self.progress_bar_label.grid(column=2, row=4, columnspan=30, padx=150, sticky='w')
+        self.progress_bar.grid(column=0, row=3, columnspan=15, pady=5, padx=5, sticky='w')
 
 
 class SimulationCanvas(customtkinter.CTkCanvas):
