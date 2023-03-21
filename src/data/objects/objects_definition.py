@@ -8,7 +8,7 @@ class Tags(Enum):
     NONP2PLINKPROPERTIES_TAG = 'nonp2plinkproperties'
     IP_TAG = 'ip'
     ADDRESS_TAG = 'address'
-    NSC_TAG = 'ncs'
+    NCS_TAG = 'ncs'
     P_TAG = 'p'
     WPR_TAG = 'wpr'
     PR_TAG = 'pr'
@@ -44,7 +44,7 @@ class Node:
     has_ending = False
     ID_TAG = 'id'
     SYS_ID_TAG = 'sysId'
-    LOX_X_TAG = 'locX'
+    LOC_X_TAG = 'locX'
     LOC_Y_TAG = 'locY'
 
     def __init__(self, name, id_node, sys_id, loc_x, loc_y):

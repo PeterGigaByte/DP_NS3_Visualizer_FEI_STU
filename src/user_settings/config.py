@@ -63,7 +63,6 @@ def get_gui_config():
 def get_parser_config():
     return read_config()['PARSER']
 
-
 # TODO
 # To delete(testing purpose):
-build_file()
+# build_file()

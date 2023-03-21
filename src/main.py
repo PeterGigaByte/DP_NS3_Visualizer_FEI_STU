@@ -1,4 +1,4 @@
-from src.gui.action.simulation import Ns3VisualizerApp
+from src.gui.action.animation import Ns3VisualizerApp
 
 # Initialization function
 if __name__ == '__main__':

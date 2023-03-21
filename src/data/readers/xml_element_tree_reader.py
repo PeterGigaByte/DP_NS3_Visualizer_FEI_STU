@@ -1,12 +1,11 @@
 import logging
-from xml.dom.minidom import parse
 from xml.etree import ElementTree
 
 from src.data.objects.objects_definition import Tags, Anim, Node, Nu, NonP2pLinkProperties, Address, Ip, IpV6, Ncs, P, \
     Wpr, Pr, Res, Link
 
 
-def parse_tag(selected_tag):
+def tree_element_parse_tag(selected_tag):
     match selected_tag.tag:
         case Tags.ANIM_TAG.value:
             return Anim(selected_tag.tag,
@@ -18,7 +17,7 @@ def parse_tag(selected_tag):
             return Node(selected_tag.tag,
                         selected_tag.attrib.get(Node.ID_TAG),
                         selected_tag.attrib.get(Node.SYS_ID_TAG),
-                        selected_tag.attrib.get(Node.LOX_X_TAG),
+                        selected_tag.attrib.get(Node.LOC_X_TAG),
                         selected_tag.attrib.get(Node.LOC_Y_TAG)
                         )
 
@@ -60,7 +59,7 @@ def parse_tag(selected_tag):
         case Tags.ADDRESS_TAG.value:
             return Address(selected_tag.tag, selected_tag.attrib.get(Address.IP_ADDRESS_TAG))
 
-        case Tags.NSC_TAG.value:
+        case Tags.NCS_TAG.value:
             return Ncs(selected_tag.tag,
                        selected_tag.attrib.get(Ncs.NC_ID_TAG),
                        selected_tag.attrib.get(Ncs.N_TAG),
@@ -114,7 +113,7 @@ def call_xml_tree_element_parser(path):
     tags = tree.getroot()
 
     # anim tag
-    anim = parse_tag(tags)
+    anim = tree_element_parse_tag(tags)
     anim_content = []
 
     # none_type counter
@@ -122,13 +121,13 @@ def call_xml_tree_element_parser(path):
 
     # read all tags
     for selected_tag in tags:
-        item = parse_tag(selected_tag)
+        item = tree_element_parse_tag(selected_tag)
 
         # check if some item has no type - test functionality
         if item is None:
             none_type += 1
             print(f'Unknown tag in main content : {item}')
-        anim_content.append(parse_tag(selected_tag))
+        anim_content.append(tree_element_parse_tag(selected_tag))
 
     # add to anim object as content
     anim.content = anim_content
@@ -137,7 +136,3 @@ def call_xml_tree_element_parser(path):
     print(f'NoneType tags : {none_type}')
     logging.debug('Xml parser end')
     return anim, none_type
-
-
-def call_xml_dom_parser(path):
-    return parse(path)

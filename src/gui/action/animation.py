@@ -5,9 +5,10 @@ from tkinter.messagebox import showinfo
 import customtkinter
 from PIL import ImageTk, Image
 
-from src.data.convetor.json_convertor import call_json_parser
 from src.data.objects.objects_definition import Node, P
-from src.data.readers.xml_reader import call_xml_dom_parser, call_xml_tree_element_parser
+from src.data.readers.json_reader import call_json_parser
+from src.data.readers.xml_dom_reader import call_xml_dom_parser
+from src.data.readers.xml_element_tree_reader import call_xml_tree_element_parser
 from src.gui import window
 from src.user_settings import settings
 from src.utils.compute_utils import compute_coordinates_location, create_node_dict_with_coordinates
@@ -72,7 +73,7 @@ class Ns3VisualizerApp:
         if self.type == 'xml':
             if settings.xml_parser_type() == 'treeElement':
                 self.selected_data = call_xml_tree_element_parser(filename)
-            else:
+            elif settings.xml_parser_type() == 'dom':
                 self.selected_data = call_xml_dom_parser(filename)
         elif self.type == 'json':
             self.selected_data = call_json_parser(filename)
@@ -99,8 +100,8 @@ class Ns3VisualizerApp:
                                                 int(settings.canvas_width()),
                                                 int(settings.canvas_height()))
 
-            x = float(node.loc_x)
-            y = float(node.loc_y)
+            # x = float(node.loc_x)
+            # y = float(node.loc_y)
             node.loc_x = x
             node.loc_y = y
             self.nodes.append(self.simulation_canvas.create_image(x, y, anchor='nw', image=self.node_img))

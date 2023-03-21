@@ -13,7 +13,3 @@ def xml_convert_to_json(path):
         json_data = json.dumps(xmltodict.parse(xml_file.read()))
         with open(get_file_name(path) + '.json', "w") as json_file:
             json_file.write(json_data)
-
-
-def call_json_parser(path):
-    return json.load(open(path))
